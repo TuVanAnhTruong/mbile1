@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <LinearLayout
+        android:id="@+id/mainContent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#2E2E2E"
+            android:padding="16dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="12dp"
+            android:elevation="4dp"
+            android:gravity="center_vertical">
+
+            <!-- Icon menu -->
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_menu"
+                android:tint="#FFFFFF" />
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Home"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginStart="12dp" />
+
+            <!-- Avatar -->
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/avatar_sample"
+                android:scaleType="centerCrop"
+                android:clipToOutline="true"
+                 />
+        </LinearLayout>
+
+        <!-- Welcome Text -->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Welcome"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="12dp" />
+
+        <!-- Search -->
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Tìm kiếm..."
+            android:iconifiedByDefault="false"
+            android:background="#EEEEEE"
+            android:padding="8dp" />
+        <ImageView
+            android:id="@+id/bannerImage"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/xe_dap_6" />
+
+        <ListView
+            android:id="@+id/listViewItems"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="#CCCCCC"
+            android:dividerHeight="1dp"
+            android:layout_marginTop="12dp"
+            android:background="#FAFAFA" />
+
+        <!-- Back button -->
+        <Button
+            android:id="@+id/btnBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
