@@ -33,14 +33,27 @@ public class HomeActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Button quay lại
+        // Nút quay lại
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
         });
 
-        // ListView với CustomAdapter
+        // profile
+        ImageView profile = findViewById(R.id.profile);
+        profile.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+            startActivity(intent);
+        });
+        // Giỏ hàng
+        ImageView cart = findViewById(R.id.shopping);
+        cart.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), CartActivity.class);
+            startActivity(intent);
+        });
+
+        // Danh sách sản phẩm
         ListView listView = findViewById(R.id.listViewItems);
         String[] items = {"Xe đạp thể thao", "Xe đạp trẻ em", "Xe đạp leo núi", "Xe đạp đường phố"};
         int[] images = {
@@ -50,11 +63,33 @@ public class HomeActivity extends AppCompatActivity {
                 R.drawable.xe_dap_4
         };
 
+        String[] descriptions = {
+                "Xe đạp thể thao nhẹ, phù hợp tập luyện.",
+                "Xe đạp nhỏ gọn cho trẻ em từ 6-12 tuổi.",
+                "Xe leo núi với giảm xóc cực tốt.",
+                "Xe đường phố, thiết kế cổ điển dễ chạy."
+        };
+
+        String[] prices = {
+                "3.000.000đ", "1.800.000đ", "4.500.000đ", "2.500.000đ"
+        };
+
+        // Tạo adapter và set lên ListView
         CustomAdapter adapter = new CustomAdapter(this, items, images);
         listView.setAdapter(adapter);
+
+        // Sự kiện khi nhấn vào sản phẩm
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Intent intent = new Intent(HomeActivity.this, ProductDetailActivity.class);
+            intent.putExtra("name", items[position]);
+            intent.putExtra("image", images[position]);
+            intent.putExtra("description", descriptions[position]);
+            intent.putExtra("price", "Giá: " + prices[position]);
+            startActivity(intent);
+        });
     }
 
-    // ✅ CustomAdapter nên đặt ngoài onCreate như thế này
+    // ✅ CustomAdapter đúng vị trí
     public class CustomAdapter extends ArrayAdapter<String> {
 
         private final Context context;

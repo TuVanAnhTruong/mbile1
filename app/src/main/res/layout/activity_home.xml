@@ -50,12 +50,21 @@
 
             <!-- Avatar -->
             <ImageView
+                android:id="@+id/profile"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/avatar_sample"
                 android:scaleType="centerCrop"
                 android:clipToOutline="true"
                  />
+            <ImageView
+                android:id="@+id/shopping"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/shopping_cart_24"
+                android:scaleType="centerCrop"
+                android:clipToOutline="true"
+                />
         </LinearLayout>
 
         <!-- Welcome Text -->

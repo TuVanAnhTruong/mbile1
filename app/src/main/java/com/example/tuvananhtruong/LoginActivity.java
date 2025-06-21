@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 EditText objpass = findViewById(R.id.editTextNumberPassword2);
                 String txtpass = objpass.getText().toString();
-                if (txtpass.equals("123") && txtphone.equals("abc")) {
+                if (txtpass.equals("123") && txtphone.equals("anhtruong")) {
                     Intent it = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(it);
                 }
@@ -42,6 +42,12 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Login failed!", Toast.LENGTH_LONG).show();
                 }
             }
+        });
+        // Nút quay lại
+        Button btnRegister = findViewById(R.id.btnregister);
+        btnRegister.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+            startActivity(intent);
         });
     }
 }
