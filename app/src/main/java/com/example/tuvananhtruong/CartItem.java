@@ -1,5 +1,8 @@
 package com.example.tuvananhtruong;
 
+import android.view.View;
+import android.widget.Button;
+
 public class CartItem {
     private String name;
     private int price;

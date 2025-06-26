@@ -43,20 +43,45 @@ public class RegisterActivity extends AppCompatActivity {
         // Xử lý khi nhấn nút "Đăng ký"
         btnRegister.setOnClickListener(v -> {
             String inputUsername = edtUsername.getText().toString().trim();
-            String inputPassword = edtPassword.getText().toString();
-            String confirmPassword = edtConfirmPassword.getText().toString();
+            String inputPassword = edtPassword.getText().toString().trim();
+            String confirmPassword = edtConfirmPassword.getText().toString().trim();
 
+            // Kiểm tra trống
             if (inputUsername.isEmpty() || inputPassword.isEmpty() || confirmPassword.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-            } else if (!inputPassword.equals(confirmPassword)) {
-                Toast.makeText(this, "Mật khẩu xác nhận không trùng khớp", Toast.LENGTH_SHORT).show();
-            } else if (!inputUsername.equals(correctUsername) || !inputPassword.equals(correctPassword)) {
-                Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                // Xử lý tiếp ở đây nếu cần
+                return;
             }
+
+            // Ràng buộc username chỉ chứa chữ cái
+            if (!inputUsername.matches("^[a-zA-Z]+$")) {
+                Toast.makeText(this, "Username chỉ được chứa chữ cái!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Ràng buộc password chỉ chứa số
+            if (!inputPassword.matches("^\\d+$")) {
+                Toast.makeText(this, "Password chỉ được chứa số!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Kiểm tra xác nhận mật khẩu
+            if (!inputPassword.equals(confirmPassword)) {
+                Toast.makeText(this, "Mật khẩu xác nhận không trùng khớp", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Kiểm tra tài khoản đúng
+            if (!inputUsername.equals(correctUsername) || !inputPassword.equals(correctPassword)) {
+                Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+            // Chuyển sang Login nếu cần
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
         });
+
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);

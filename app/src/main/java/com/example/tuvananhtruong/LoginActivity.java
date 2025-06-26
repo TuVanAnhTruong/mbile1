@@ -26,23 +26,37 @@ public class LoginActivity extends AppCompatActivity {
             return insets;
         });
         Button btnNextpage = findViewById(R.id.btnLogin);
-        btnNextpage.setOnClickListener(new View.OnClickListener(){
+        btnNextpage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText objphone = findViewById(R.id.editTextTextEmailAddress2);
-                String txtphone = objphone.getText().toString();
+                String txtphone = objphone.getText().toString().trim();
 
                 EditText objpass = findViewById(R.id.editTextNumberPassword2);
-                String txtpass = objpass.getText().toString();
+                String txtpass = objpass.getText().toString().trim();
+
+                // Kiểm tra username chỉ chứa chữ cái (a-z, A-Z)
+                if (!txtphone.matches("^[a-zA-Z]+$")) {
+                    Toast.makeText(LoginActivity.this, "Username chỉ được chứa chữ cái!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Kiểm tra password chỉ chứa số (0-9)
+                if (!txtpass.matches("^\\d+$")) {
+                    Toast.makeText(LoginActivity.this, "Password chỉ được chứa số!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                // Kiểm tra đúng cặp username-password
                 if (txtpass.equals("123") && txtphone.equals("anhtruong")) {
                     Intent it = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(it);
-                }
-                else{
+                } else {
                     Toast.makeText(LoginActivity.this, "Login failed!", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
         // Nút quay lại
         Button btnRegister = findViewById(R.id.btnregister);
         btnRegister.setOnClickListener(v -> {

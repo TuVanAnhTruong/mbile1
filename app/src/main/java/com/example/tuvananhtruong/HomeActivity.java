@@ -55,23 +55,25 @@ public class HomeActivity extends AppCompatActivity {
 
         // Danh sách sản phẩm
         ListView listView = findViewById(R.id.listViewItems);
-        String[] items = {"Xe đạp thể thao", "Xe đạp trẻ em", "Xe đạp leo núi", "Xe đạp đường phố"};
+        String[] items = {"Xe đạp thể thao", "Xe đạp trẻ em", "Xe đạp leo núi", "Xe đạp đường phố","Xe đồ chơi"};
         int[] images = {
                 R.drawable.xe_dap_1,
                 R.drawable.xe_dap_2,
                 R.drawable.xe_dap_3,
-                R.drawable.xe_dap_4
+                R.drawable.xe_dap_4,
+                R.drawable.xe_do_coi
         };
 
         String[] descriptions = {
                 "Xe đạp thể thao nhẹ, phù hợp tập luyện.",
                 "Xe đạp nhỏ gọn cho trẻ em từ 6-12 tuổi.",
                 "Xe leo núi với giảm xóc cực tốt.",
-                "Xe đường phố, thiết kế cổ điển dễ chạy."
+                "Xe đường phố, thiết kế cổ điển dễ chạy.",
+                "Dành cho con nít"
         };
 
         String[] prices = {
-                "3.000.000đ", "1.800.000đ", "4.500.000đ", "2.500.000đ"
+                "3.000.000đ", "1.800.000đ", "4.500.000đ", "2.500.000đ","1.500.000đ"
         };
 
         // Tạo adapter và set lên ListView

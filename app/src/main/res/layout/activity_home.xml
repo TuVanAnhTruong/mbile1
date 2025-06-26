@@ -56,6 +56,7 @@
                 android:src="@drawable/avatar_sample"
                 android:scaleType="centerCrop"
                 android:clipToOutline="true"
+                android:tint="#FFFFFF"
                  />
             <ImageView
                 android:id="@+id/shopping"
@@ -64,6 +65,7 @@
                 android:src="@drawable/shopping_cart_24"
                 android:scaleType="centerCrop"
                 android:clipToOutline="true"
+                android:tint="#FFFFFF"
                 />
         </LinearLayout>
 

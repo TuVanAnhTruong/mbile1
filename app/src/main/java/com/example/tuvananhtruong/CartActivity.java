@@ -56,7 +56,6 @@ public class CartActivity extends AppCompatActivity {
             intent.putExtra("total", total);
             startActivity(intent);
         });
-
     }
 
     private void loadCartItems() {
@@ -65,24 +64,33 @@ public class CartActivity extends AppCompatActivity {
 
         cartItemsContainer.removeAllViews(); // Xóa nếu có cũ
 
-        for (CartItem item : items) {
+        for (int i = 0; i < items.size(); i++) {
+            CartItem item = items.get(i);
+            int index = i; // dùng để xóa đúng item
+
             View itemView = LayoutInflater.from(this).inflate(R.layout.activity_cartitem, null);
 
             ImageView img = itemView.findViewById(R.id.itemImage);
             TextView name = itemView.findViewById(R.id.itemName);
             TextView price = itemView.findViewById(R.id.itemPrice);
-            TextView quantity = itemView.findViewById(R.id.itemQuantity); // ✅ thêm đúng chỗ
+            TextView quantity = itemView.findViewById(R.id.itemQuantity);
+            TextView removeBtn = itemView.findViewById(R.id.cartItemRemoveBtn);
 
             img.setImageResource(item.getImageResId());
             name.setText(item.getName());
             price.setText("Giá: " + item.getPrice() + "₫");
-            quantity.setText("Số lượng: " + item.getQuantity()); // ✅ đặt giá trị số lượng
+            quantity.setText("Số lượng: " + item.getQuantity());
 
-            total += item.getPrice() * item.getQuantity(); // ✅ tính theo số lượng
+            total += item.getPrice() * item.getQuantity();
+
+            // Gán sự kiện nút Xóa
+            removeBtn.setOnClickListener(v -> {
+                CartManager.removeItem(index);
+                loadCartItems(); // Tải lại danh sách
+            });
 
             cartItemsContainer.addView(itemView);
         }
-
         txtTotalPrice.setText("Tổng tiền: " + total + "₫");
 
     }

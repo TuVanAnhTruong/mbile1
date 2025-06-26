@@ -23,4 +23,9 @@ public class CartManager {
     public static void clearCart() {
         cart.clear();
     }
+    public static void removeItem(int index) {
+        if (index >= 0 && index < cart.size()) {
+            cart.remove(index);
+        }
+    }
 }
