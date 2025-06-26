@@ -28,35 +28,36 @@ public class ProductDetailActivity extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
-
         });
-        // Nút quay lại
-        ImageView cart = findViewById(R.id.Back);
-        cart.setOnClickListener(v -> {
-            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+
+        // ⬅️ Nút quay lại về trang Home
+        ImageView btnBack = findViewById(R.id.Back);
+        btnBack.setOnClickListener(v -> {
+            Intent intent = new Intent(ProductDetailActivity.this, HomeActivity.class);
             startActivity(intent);
+            finish();
         });
 
-        // 🔸 Ánh xạ view từ XML
+        // 📌 Ánh xạ view
         productImage = findViewById(R.id.productImage);
         productName = findViewById(R.id.productName);
         productDescription = findViewById(R.id.productDescription);
         productPrice = findViewById(R.id.productPrice);
+        Button btnAddToCart = findViewById(R.id.addToCartBtn);
 
-        // 🔸 Nhận dữ liệu từ Intent
+        // 📥 Nhận dữ liệu từ Intent
         String name = getIntent().getStringExtra("name");
         String description = getIntent().getStringExtra("description");
         String price = getIntent().getStringExtra("price");
         int imageResId = getIntent().getIntExtra("image", R.drawable.xe_dap_1);
 
-        // 🔸 Gán dữ liệu
+        // 📤 Hiển thị lên giao diện
         productName.setText(name);
         productDescription.setText(description);
         productPrice.setText(price);
         productImage.setImageResource(imageResId);
 
-        // Thêm vào giỏ hàng
-        Button btnAddToCart = findViewById(R.id.addToCartBtn);
+        // 🛒 Xử lý nút thêm vào giỏ hàng
         btnAddToCart.setOnClickListener(v -> {
             if (price == null || price.isEmpty()) {
                 Toast.makeText(this, "Giá sản phẩm không hợp lệ!", Toast.LENGTH_SHORT).show();
@@ -64,7 +65,8 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
 
             try {
-                String rawPrice = price.replaceAll("[^0-9]", ""); // bỏ dấu chấm, ₫
+                // Lấy số từ chuỗi "Giá: 2.500.000đ" → 2500000
+                String rawPrice = price.replaceAll("[^0-9]", "");
                 int priceInt = Integer.parseInt(rawPrice);
 
                 CartItem item = new CartItem(name, priceInt, imageResId);
@@ -75,7 +77,5 @@ public class ProductDetailActivity extends AppCompatActivity {
                 Toast.makeText(this, "Lỗi khi thêm sản phẩm: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
     }
-
 }

@@ -5,6 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5EBDD"
     tools:context=".HomeActivity">
 
     <LinearLayout
@@ -35,7 +36,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_menu"
-                android:tint="#FFFFFF" />
+                app:tint="#FFFFFF" />
 
             <!-- Title -->
             <TextView
@@ -56,8 +57,7 @@
                 android:src="@drawable/avatar_sample"
                 android:scaleType="centerCrop"
                 android:clipToOutline="true"
-                android:tint="#FFFFFF"
-                 />
+                app:tint="#FFFFFF" />
             <ImageView
                 android:id="@+id/shopping"
                 android:layout_width="40dp"
@@ -65,8 +65,7 @@
                 android:src="@drawable/shopping_cart_24"
                 android:scaleType="centerCrop"
                 android:clipToOutline="true"
-                android:tint="#FFFFFF"
-                />
+                app:tint="#FFFFFF" />
         </LinearLayout>
 
         <!-- Welcome Text -->
@@ -95,17 +94,26 @@
             android:layout_height="180dp"
             android:layout_marginTop="16dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/xe_dap_6" />
+            android:src="@drawable/banner" />
 
+<!--        <ListView-->
+<!--            android:id="@+id/listViewItems"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:divider="#CCCCCC"-->
+<!--            android:dividerHeight="1dp"-->
+<!--            android:layout_marginTop="12dp"-->
+<!--            android:background="#FAFAFA" />-->
         <ListView
             android:id="@+id/listViewItems"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:divider="#CCCCCC"
             android:dividerHeight="1dp"
-            android:layout_marginTop="12dp"
             android:background="#FAFAFA" />
+
 
         <!-- Back button -->
         <Button

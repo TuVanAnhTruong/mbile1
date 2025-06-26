@@ -1,0 +1,6 @@
+<!-- res/drawable/rounded_pay_button.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#D2691E" />
+    <corners android:radius="24dp" />
+</shape>

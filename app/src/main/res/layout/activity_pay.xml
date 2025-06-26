@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF4E6"
     tools:context=".PayActivity">
 
     <LinearLayout
@@ -12,59 +14,74 @@
         android:padding="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <!-- Header -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp">
+            android:padding="8dp">
 
             <ImageView
                 android:id="@+id/Back"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/outline_arrow_back_24"
-                android:scaleType="centerCrop"
+                android:scaleType="centerInside"
+                android:background="?attr/selectableItemBackgroundBorderless"
                 android:layout_alignParentStart="true"/>
         </RelativeLayout>
 
         <!-- Tiêu đề -->
         <TextView
             android:id="@+id/checkoutTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Thanh toán"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_gravity="center"
+            android:textColor="#5C4033"
+            android:gravity="center"
             android:paddingBottom="20dp" />
 
-        <!-- Danh sách sản phẩm (giả lập đơn giản) -->
-        <TextView
-            android:id="@+id/productList"
+        <!-- Card danh sách sản phẩm -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1. Xe đạp thể thao - 2.000.000₫"
-            android:textSize="16sp"
-            android:paddingBottom="20dp" />
+            android:background="@drawable/rounded_card"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
 
-        <!-- Tổng tiền -->
-        <TextView
-            android:id="@+id/totalAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tổng: 2.500.000₫"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:paddingBottom="20dp" />
+            <TextView
+                android:id="@+id/productList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Xe đạp thể thao - 2.000.000₫"
+                android:textSize="16sp"
+                android:textColor="#5C4033"
+                android:paddingBottom="8dp" />
 
-        <!-- Nút thanh toán -->
+            <TextView
+                android:id="@+id/totalAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tổng: 2.500.000₫"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#5C4033" />
+        </LinearLayout>
+
+        <!-- Nút Thanh toán -->
         <Button
             android:id="@+id/btnPay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Thanh toán"
-            android:backgroundTint="#4CAF50"
             android:textColor="#FFFFFF"
-            android:textSize="16sp" />
+            android:textSize="18sp"
+            android:background="@drawable/rounded_pay_button"
+            android:layout_marginTop="16dp" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
